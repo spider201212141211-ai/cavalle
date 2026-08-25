@@ -1,12 +1,633 @@
-HTML
 <!DOCTYPE html>
-<html> 
-<head> 
-     <title>Mi pagina web</title>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CAVELLE | Ropa Ecuestre</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f4eee5;
+    color: #171b17;
+}
+
+/* ---------- NAVBAR ---------- */
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 18px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(
+        rgba(0,0,0,.75),
+        rgba(0,0,0,0)
+    );
+}
+
+.logo {
+    color: #c8a45d;
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.logo span {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    gap: 35px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding-bottom: 8px;
+}
+
+nav a:hover {
+    color: #c8a45d;
+    border-bottom: 1px solid #c8a45d;
+}
+
+.icons {
+    color: #d0ae68;
+    font-size: 23px;
+}
+
+/* ---------- HERO ---------- */
+
+.hero {
+    min-height: 680px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,.92) 0%,
+            rgba(0,0,0,.70) 40%,
+            rgba(0,0,0,.20) 100%
+        ),
+        url("https://images.unsplash.com/photo-1551884831-bbf3cdc6469e?auto=format&fit=crop&w=2000&q=85")
+        center/cover;
+}
+
+.hero-content {
+    width: 50%;
+    padding-left: 8%;
+    color: white;
+}
+
+.hero h1 {
+    font-size: clamp(55px, 7vw, 100px);
+    letter-spacing: 8px;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    color: #d2b36e;
+    font-size: clamp(22px, 3vw, 36px);
+    letter-spacing: 3px;
+    font-weight: normal;
+    line-height: 1.4;
+}
+
+.hero-line {
+    width: 220px;
+    height: 1px;
+    background: #c8a45d;
+    margin: 28px 0;
+}
+
+.hero p {
+    font-size: 18px;
+    letter-spacing: 4px;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 16px 35px;
+    border: 1px solid #c8a45d;
+    color: #d4b46c;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: .3s;
+}
+
+.button:hover {
+    background: #c8a45d;
+    color: #101510;
+}
+
+/* ---------- BENEFITS ---------- */
+
+.benefits {
+    background: #10241d;
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    padding: 25px 5%;
+    text-align: center;
+}
+
+.benefit {
+    padding: 10px 15px;
+    border-right: 1px solid #806a3d;
+}
+
+.benefit:last-child {
+    border-right: none;
+}
+
+.benefit strong {
+    display: block;
+    color: #d0ae68;
+    font-size: 15px;
+    margin-bottom: 7px;
+    letter-spacing: 1px;
+}
+
+.benefit span {
+    font-size: 12px;
+}
+
+/* ---------- COLLECTION ---------- */
+
+.collection {
+    padding: 70px 4%;
+    text-align: center;
+}
+
+.section-small {
+    color: #a5874d;
+    letter-spacing: 3px;
+    font-size: 14px;
+}
+
+.collection h2 {
+    margin-top: 10px;
+    font-size: 34px;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+.products {
+    margin-top: 35px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+
+.product {
+    height: 350px;
+    position: relative;
+    overflow: hidden;
+    background: #111;
+}
+
+.product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .5s;
+}
+
+.product:hover img {
+    transform: scale(1.06);
+}
+
+.product::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        transparent 35%,
+        rgba(0,0,0,.85)
+    );
+}
+
+.product-info {
+    position: absolute;
+    z-index: 2;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+    color: white;
+}
+
+.product-info h3 {
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
+.product-info a {
+    display: inline-block;
+    margin-top: 12px;
+    border: 1px solid #c8a45d;
+    padding: 7px 18px;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+/* ---------- ABOUT ---------- */
+
+.about {
+    min-height: 430px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #111;
+    color: white;
+}
+
+.about-text {
+    padding: 65px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-text h2 {
+    font-size: 38px;
+    font-weight: normal;
+    margin: 12px 0 25px;
+}
+
+.about-text p {
+    color: #ddd;
+    line-height: 1.8;
+    max-width: 550px;
+}
+
+.about-image {
+    background:
+        linear-gradient(rgba(0,0,0,.15),rgba(0,0,0,.15)),
+        url("https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=1200&q=85")
+        center/cover;
+}
+
+/* ---------- INSTAGRAM ---------- */
+
+.instagram {
+    padding: 60px 4%;
+    text-align: center;
+}
+
+.instagram h2 {
+    margin: 10px 0 30px;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 8px;
+}
+
+.instagram-grid img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer {
+    background: #10241d;
+    color: white;
+    text-align: center;
+    padding: 35px;
+}
+
+footer .brand {
+    color: #d0ae68;
+    font-size: 25px;
+    letter-spacing: 4px;
+}
+
+footer p {
+    margin-top: 10px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+/* ---------- MÓVIL ---------- */
+
+@media(max-width: 900px) {
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 620px;
+    }
+
+    .hero-content {
+        width: 90%;
+        padding-left: 8%;
+    }
+
+    .benefits {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .benefit:nth-child(2) {
+        border-right: none;
+    }
+
+    .products {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+    }
+
+    .about-image {
+        min-height: 300px;
+    }
+
+    .instagram-grid {
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media(max-width: 500px) {
+
+    .hero h1 {
+        font-size: 50px;
+        letter-spacing: 5px;
+    }
+
+    .hero h2 {
+        font-size: 20px;
+    }
+
+    .products {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .product {
+        height: 280px;
+    }
+
+    .benefits {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .instagram-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+</style>
 </head>
 
 <body>
-    <h1>¡Hola! </h1>
-    <p>Esta es mi primera pagina web.</p>
+
+<!-- NAVBAR -->
+
+<header>
+
+    <div class="logo">
+        ♕
+        <span>CAVELLE</span>
+    </div>
+
+    <nav>
+        <a href="#inicio">INICIO</a>
+        <a href="#coleccion">COLECCIÓN</a>
+        <a href="#sobre">SOBRE CAVELLE</a>
+        <a href="#instagram">INSTAGRAM</a>
+    </nav>
+
+    <div class="icons">
+        ♡　♙
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+
+    <div class="hero-content">
+
+        <h1>CAVELLE</h1>
+
+        <h2>
+            ROPA PARA MONTAR<br>
+            A CABALLO
+        </h2>
+
+        <div class="hero-line"></div>
+
+        <p>ESTILO. PASIÓN. LIBERTAD.</p>
+
+        <a href="#coleccion" class="button">
+            VER COLECCIÓN
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- BENEFICIOS -->
+
+<section class="benefits">
+
+    <div class="benefit">
+        <strong>🚚 ENVÍOS A ESPAÑA</strong>
+        <span>Envíos rápidos y seguros</span>
+    </div>
+
+    <div class="benefit">
+        <strong>♢ CALIDAD PREMIUM</strong>
+        <span>Diseñada para durar</span>
+    </div>
+
+    <div class="benefit">
+        <strong>♧ DISEÑO EXCLUSIVO</strong>
+        <span>Elegante y funcional</span>
+    </div>
+
+    <div class="benefit">
+        <strong>♞ PARA JINETES</strong>
+        <span>Hecho para montar</span>
+    </div>
+
+</section>
+
+
+<!-- COLECCIÓN -->
+
+<section class="collection" id="coleccion">
+
+    <div class="section-small">COLECCIÓN</div>
+
+    <h2>PARA JINETES, CON ESTILO</h2>
+
+    <div class="products">
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1551884831-bbf3cdc6469e?auto=format&fit=crop&w=700&q=80">
+            <div class="product-info">
+                <h3>CHAQUETAS</h3>
+                <a href="#">VER</a>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=700&q=80">
+            <div class="product-info">
+                <h3>PANTALONES</h3>
+                <a href="#">VER</a>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80">
+            <div class="product-info">
+                <h3>POLOS</h3>
+                <a href="#">VER</a>
+            </div>
+        </div>
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=700&q=80">
+            <div class="product-info">
+                <h3>SUDADERAS</h3>
+                <a href="#">VER</a>
+            </div>
+        </div>
+
+        <!-- CASCOS -->
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=700&q=80">
+            <div class="product-info">
+                <h3>CASCOS</h3>
+                <a href="#">VER</a>
+            </div>
+        </div>
+
+        <!-- ACCESORIOS -->
+
+        <div class="product">
+            <img src="https://images.unsplash.com/photo-1551884831-bbf3cdc6469e?auto=format&fit=crop&w=700&q=80">
+            <div class="product-info">
+                <h3>ACCESORIOS</h3>
+                <a href="#">VER</a>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SOBRE CAVELLE -->
+
+<section class="about" id="sobre">
+
+    <div class="about-text">
+
+        <div class="section-small">
+            SOBRE CAVELLE
+        </div>
+
+        <h2>
+            MÁS QUE ROPA,<br>
+            UNA FORMA DE VIDA
+        </h2>
+
+        <p>
+            Cavelle nace de la pasión por los caballos y del deseo
+            de crear ropa que combine elegancia, comodidad y
+            rendimiento. Cada prenda está diseñada para acompañarte
+            dentro y fuera de la pista, con la calidad y el estilo
+            que mereces.
+        </p>
+
+        <a href="#" class="button">
+            NUESTRA HISTORIA
+        </a>
+
+    </div>
+
+    <div class="about-image"></div>
+
+</section>
+
+
+<!-- INSTAGRAM -->
+
+<section class="instagram" id="instagram">
+
+    <div class="section-small">
+        INSTAGRAM
+    </div>
+
+    <h2>@CAVELLE.EQUESTRE</h2>
+
+    <div class="instagram-grid">
+
+        <img src="https://images.unsplash.com/photo-1551884831-bbf3cdc6469e?auto=format&fit=crop&w=500&q=80">
+        <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=500&q=80">
+        <img src="https://images.unsplash.com/photo-1517323152489-1b1a1b4f8f36?auto=format&fit=crop&w=500&q=80">
+        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=500&q=80">
+        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=500&q=80">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=500&q=80">
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="brand">CAVELLE</div>
+
+    <p>
+        ROPA ECUESTRE · MADRID
+    </p>
+
+    <p>
+        © 2026 CAVELLE. Todos los derechos reservados.
+    </p>
+
+</footer>
+
 </body>
-</html> 
+</html>
